@@ -72,13 +72,13 @@ public class PrestamoEducativo extends Prestamo {
     
     @Override
     public String toString() {
-        String cadena = String.format("PRÉSTAMO EDUCATIVO\n%s\n"
-                + "\tNivel de educación: %s\n"
-                + "\tInstitución Educativa\n"
-                + "\t\tNombre: %s\n"
-                + "\t\tSiglas: %s\n"
-                + "\tValor de la carrera: %.2f\n"
-                + "\tValor mensual del préstamo: %.2f\n\n", 
+        String cadena = String.format("PRÉSTAMO EDUCATIVO\n%s"
+                + "\tNivel de educación: %s\n\n"
+                + "Institución Educativa\n"
+                + "\tNombre: %s\n"
+                + "\tSiglas: %s\n\n"
+                + "Valor de la carrera: %.2f\n"
+                + "Valor mensual del préstamo: %.2f\n\n", 
                 super.toString(), 
                 obtenerNivelB(),
                 obtenerCentroEdu().obtenerNombre(),

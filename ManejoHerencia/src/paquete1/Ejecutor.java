@@ -20,31 +20,36 @@ public class Ejecutor {
         Scanner entrada = new Scanner(System.in);
         int op;
         String uwu;
-        ArrayList<Prestamo> prestamo = null; 
+        String persona = null;
+        
+        ArrayList<PrestamoAutomovil> prestamoAu = new ArrayList<>(); 
+        ArrayList<PrestamoEducativo> prestamoEd = new ArrayList<>(); 
 
         do {
+            persona = "beneficiario";
             System.out.println("      MENÚ");
             System.out.println("Ingrese [1] si quiere ingresar un préstamo de automovil");
             System.out.println("Ingrese [2] si quiere ingresar un préstamo eduactivo");
             op = entrada.nextInt();
             entrada.nextLine();
-
+            
             switch (op) {
                 case 1 -> {
-                    Persona beneficiario = ingresarPersona();
-                    entrada.nextLine();
+                    
+                    Persona beneficiario = ingresarPersona(persona);
                     
                     System.out.print("Ingrese la ciudad: ");
                     String ciudad = entrada.nextLine();
                     System.out.print("Ingrese los meses: ");
                     int meses = entrada.nextInt();
+                    entrada.nextLine();
                     System.out.print("Tipo de auto: ");
                     String tipo = entrada.nextLine();
                     System.out.print("Marca del auto: ");
                     String marca = entrada.nextLine();
                     
-                    Persona garante = ingresarPersona();
-                    entrada.nextLine();
+                    persona = "garante";
+                    Persona garante = ingresarPersona(persona);
                     
                     System.out.print("Valor del auto: ");
                     double valorAu = entrada.nextDouble();
@@ -52,11 +57,11 @@ public class Ejecutor {
                     PrestamoAutomovil prestamo1 = new PrestamoAutomovil(
                             tipo, marca, garante, valorAu, beneficiario, meses, ciudad);
                     
-                    prestamo.add(prestamo1);
+                prestamoAu.add(prestamo1);
+                entrada.nextLine();
                 }
                 case 2 -> {
-                    Persona beneficiario = ingresarPersona();
-                    entrada.nextLine();
+                    Persona beneficiario = ingresarPersona(persona);
                     
                     System.out.print("Ingrese la ciudad: ");
                     String ciudad = entrada.nextLine();
@@ -77,22 +82,39 @@ public class Ejecutor {
                     PrestamoEducativo prestamo2 = new PrestamoEducativo(
                             nivel, ins, valorC, beneficiario, meses, ciudad);
                     
-                    prestamo.add(prestamo2);
+                    prestamoEd.add(prestamo2);
                 }
                 default -> {
-
+                    System.err.println("Opción inválida");
+                    System.err.println("Inténtelo de nuevo");
                 }
             }
-        } while (uwu!="S");
+            
+            System.out.println("Ingrese 'S' si quiere seguir en el programa");
+            System.out.println("Ingrese cualquier otra letra si ya no desea "
+                    + "continuar en el programa");
+            uwu = entrada.nextLine();
+        } while (uwu.equals("S"));
+        
+        System.out.println("");
+        System.out.println("PRESENTACIÓN DE LOS DATOS");
+        
+        for (int i=0; i<prestamoAu.size();i++){
+            System.out.printf("\nPRÉSTAMO %d\n%s\n", i+1, prestamoAu.get(i));
+        }
+        
+        for (int i=0; i<prestamoEd.size();i++){
+            System.out.printf("\nPRÉSTAMO %d\n%s\n", i+1, prestamoEd.get(i));
+        }
     }
     
-    public static Persona ingresarPersona () {
+    public static Persona ingresarPersona (String p) {
         Scanner entrada = new Scanner(System.in);
-        System.out.print("Ingrese el nombre del beneficiario: ");
+        System.out.print("Ingrese el nombre del "+p+": ");
         String nombre = entrada.nextLine();
-        System.out.print("Ingrese el apellido del beneficiario: ");
+        System.out.print("Ingrese el apellido del "+p+": ");
         String apellido = entrada.nextLine();
-        System.out.print("Ingrese el username del beneficiario: ");
+        System.out.print("Ingrese el username del "+p+": ");
         String username = entrada.nextLine();
         
         Persona beneficiario = new Persona(nombre, apellido, username);

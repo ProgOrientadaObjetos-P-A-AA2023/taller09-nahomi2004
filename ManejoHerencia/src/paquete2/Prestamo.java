@@ -57,7 +57,7 @@ public class Prestamo {
                 + "\tNombre: %s\n"
                 + "\tApellido: %s\n"
                 + "\tUserName: %s\n"
-                + "Tiempo de préstamo (meses): %d\n"
+                + "\nTiempo de préstamo (meses): %d\n"
                 + "Ciudad del préstamo: %s\n", 
                 obtenerBeneficiario().obtenerNombre(),
                 obtenerBeneficiario().obtenerApellido(),

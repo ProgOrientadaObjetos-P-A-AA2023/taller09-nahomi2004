@@ -82,19 +82,21 @@ public class PrestamoAutomovil extends Prestamo {
     @Override
     public String toString() {
         String cadena = String.format("PRÉSTAMO AUTOMOVIL\n%s\n"
+                + "GARANTE\n"
+                + "\tNombre: %s\n"
+                + "\tApellido: %s\n"
+                + "\tUserName: %s\n"
+                + "AUTOMOVIL\n"
                 + "\tTipo: %s\n"
                 + "\tMarca: %s\n"
-                + "\tNombre garante: %s\n"
-                + "\tApellido garante: %s\n"
-                + "\tUserName garante: %s\n"
                 + "\tValor del auto: %.2f\n"
-                + "\tValor mensual del préstamo: %.2f\n\n", 
+                + "Valor mensual del préstamo: %.2f\n\n", 
                 super.toString(),
-                obtenerTipoAu(),
-                obtenerMarcaAu(),
                 obtenerGarante1().obtenerNombre(),
                 obtenerGarante1().obtenerApellido(),
-                obtenerGarante1().obtenerUsername(),
+                obtenerGarante1().obtenerUsername(),                
+                obtenerTipoAu(),
+                obtenerMarcaAu(),
                 obtenerValorAu(),
                 obtenerValorMensual());
         return cadena;
